@@ -34,6 +34,44 @@ mvn archetype:generate \
 -DarchetypeVersion=1.4 -DinteractiveMode=false
 ```
 
+Propriedades no arquivo POM.xml:
+
+```
+<properties>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<maven.compiler.source>1.8</maven.compiler.source>
+	<maven.compiler.target>1.8</maven.compiler.target>
+</properties>
+```
+
+Depedências no arquivo POM.xml:
+
+```
+<dependencies>
+<dependency>
+  <groupId>junit</groupId>
+  <artifactId>junit</artifactId>
+  <version>4.11</version>
+  <scope>test</scope>
+</dependency>
+<dependency>
+	<groupId>com.github.stefanbirkner</groupId>
+	<artifactId>system-rules</artifactId>
+	<version>1.19.0</version>
+	<scope>test</scope>
+</dependency>
+</dependencies>
+```
+
+Artefato no repositório Maven:
+
+```
+<groupId>br.ufpe.cinmoto.ga_tutorial.app</groupId>
+<artifactId>ga_tutorial</artifactId>
+<version>1.0-SNAPSHOT</version>
+```
+
+
 # Configuração 
 Configurando o repositório para usar Github Actions
 
