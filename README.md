@@ -19,15 +19,19 @@
 
 # Introdução
 
-O Github Actions permite que você crie fluxos de trabalho personalizados do ciclo de vida de desenvolvimento de software diretamente no seu repositório Github. Esses fluxos de trabalho são compostos por diferentes tarefas, chamadas ações, que podem ser executadas automaticamente em determinados eventos. Isso permite que você inclua recursos de integração contínua (CI) e implantação contínua (CD) e muitos outros recursos diretamente em seu repositório.
+O GitHub Actions permite que você crie fluxos de trabalho personalizados do ciclo de vida de desenvolvimento de software diretamente no seu repositório GitHub.
+Esses fluxos de trabalho são compostos por diferentes tarefas, chamadas ações, que podem ser executadas automaticamente em determinados eventos.
+Isso permite que você inclua recursos de integração contínua (CI) e implantação contínua (CD) e muitos outros recursos diretamente em seu repositório.
 
-Esta apresentação demonstra a configuração e uso do GA (Github Actions) em um repositório de um projeto java. O projeto java utilizado foi criado usando o Maven. O maven faz uso de um arquivo xml geralmente chamado ‘pom.xml’ que descreve tudo o que maven precisa e pode fazer para testar, buildar e empacotar aquele projeto.
+Esta apresentação demonstra a configuração e uso do GA (GitHub Actions) em um repositório de um projeto Java.
+O projeto Java utilizado foi criado usando o Maven.
+O Maven faz uso de um arquivo XML geralmente chamado `pom.xml` que descreve tudo o que Maven precisa e pode fazer para testar, _buildar_ e empacotar aquele projeto.
 
 # Projeto e repositório
 
-Crie um projeto usando maven e o coloque em um repositório no github
+Crie um projeto usando Maven e o coloque em um repositório no GitHub.
 
-Usando o maven é possível criar um projeto java básico:
+Usando o Maven é possível criar um projeto Java básico:
 
 ```bash
 mvn archetype:generate \
@@ -38,9 +42,9 @@ mvn archetype:generate \
     -DinteractiveMode=false
 ```
 
-## Configurando o arquivo de configuração POM.xml
+## Configurando o arquivo pom.xml
 
-Propriedades no arquivo POM.xml:
+Propriedades no arquivo pom.xml:
 
 ```xml
 <properties>
@@ -78,6 +82,12 @@ Artefato no repositório Maven:
 ```
 
 ## Classes do Domínio
+
+O nosso exemplo utiliza três classes bem simples:
+
+- Conta;
+- SaldoNaoSuficienteException;
+- TransferenciaException;
 
 Conta:
 
@@ -161,10 +171,11 @@ public class TransferenciaException extends RuntimeException {
 }
 ```
 
-
 ## Classe Com Testes Unitários
 
-ContaTest:
+O exemplo também conta com uma clsse de testes para JUnit5:
+
+- ContaTest.
 
 ```java
 public class ContaTest {
@@ -247,71 +258,73 @@ public class ContaTest {
 
 # Configuração
 
-Configurando o repositório para usar Github Actions
+Configurando o repositório para usar GitHub Actions.
 
 Em seu repositório clique na aba "`actions`":
 
-![Aba Actions](images/1%20-%20actions.png)
+![Aba Actions](images/01_actions.png)
 
 Sugestões aparecerão baseadas no projeto:
 
-![Sugestões](images/2%20-%20get_start.png)
+![Sugestões](images/02_get_start.png)
 
-Na sugestão ‘Java with Maven’ clique em  "`set up this workflow`":
+Na sugestão _Java with Maven_ clique em  "`set up this workflow`":
 
-![workflow](images/3%20-%20java_with_maven.png)
+![workflow](images/03_java_with_maven.png)
 
 Aparecerá este editor de texto abaixo:
 
-![Sugestões](images/4%20-%20editing_maven.yml.png)
+![Sugestões](images/04_editing_maven.yml.png)
 
 Preencha o editor de texto com o conteúdo abaixo respeitando a indentação mostrada.
 
-![Prenchendo o Maven](images/5%20-%20preenchendo_maven.yml.png)
+![Prenchendo o Maven](images/05_preenchendo_maven.yml.png)
 
 Após isso clique no botão para fazer o commit "`start commit`":
 
-![Commit](images/6%20-%20start_commit.png)
+![Commit](images/06_start_commit.png)
 
 # Execução
 
-Github Actions em _ação_ - acompanhando o seu workflow.
+GitHub Actions em _ação_ - acompanhando o seu workflow.
 
 Agora na aba "`Actions`" será possível acompanhar as execuções dos workflows do repositório:
 
-![Follow](images/7%20-%20acompanhamento_dos_workflows.png)
+![Follow](images/07_acompanhamento_dos_workflows.png)
 
-Cada execução será acionada automaticamente a partir de eventos que definimos no arquivo do workflow (push e pull request). Nesse caso o evento foi um push do commit que fizemos do novo arquivo (maven.yml). Com certeza esta é a primeira execução de qualquer repositório que passe a usar o GA.
+Cada execução será acionada automaticamente a partir de eventos que definimos no arquivo do workflow (push e pull request).
+Nesse caso o evento foi um push do commit que fizemos do novo arquivo (maven.yml).
+Com certeza esta é a primeira execução de qualquer repositório que passe a usar o GA.
 
 Clicando na execução em andamento do workflow que adicionamos, temos a seguinte página:
 
-![Follow](images/8%20-%20workflow_em_andamento.png)
+![Follow](images/08_workflow_em_andamento.png)
 
 Na lateral esquerda clicando em build (nome do job) podemos ver sua execução de forma mais detalhada:
 
-![Follow](images/9%20-%20execu%C3%A7%C3%A3o_detalhada.png)
+![Follow](images/09_execucao_detalhada.png)
 
-![Follow](images/10%20-%20execu%C3%A7%C3%A3o_detalhada.png)
+![Follow](images/10_execucao_detalhada.png)
 
 Ao fim de uma execução bem sucedida (todos os testes passaram) é possível fazer download do artefato (.jar) zipado.
 
-[Follow](images/11%20-%20fim_da_execucao.png)
+![Follow](images/11_fim_da_execucao.png)
 
 # Tecnologias
 
 - [Java](https://www.java.com/pt-BR/) - Java é uma linguagem de programação baseada em classes e orientada a objetos
 - [Junit](https://junit.org/junit5/) - JUnit é uma das estruturas de teste unitário mais populares no ecossistema Java
 - [Maven](https://maven.apache.org/) -  Maven é ferramenta de gerenciamento e automação de depedências
-- [Github Actions](https://github.com/features/actions) - tecnologia que automatiza todo fluxo de trabalho no desenvolvimento de software, adotando as premissas da filosofia CI / CD. A tecnologia permite a criação, teste e implantação seu código-fonte direto do GitHub.
+- [GitHub Actions](https://github.com/features/actions) - tecnologia que automatiza todo fluxo de trabalho no desenvolvimento de software, adotando as premissas da filosofia CI / CD. A tecnologia permite a criação, teste e implantação seu código-fonte direto do GitHub.
 
 # Referências
 
 - [Iniciando com  Maven em Cinco Minutos](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)
 - [Mexendo no Arquivo Pom.xml](https://maven.apache.org/pom.html)
 - [Construindo e Testando Java com Maven](https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-java-with-maven)
-- [Sobre Github Actions](https://github.com/features/actions)
-- [Introdução ao Github Actions](https://gabrieltanner.org/blog/an-introduction-to-github-actions)
-- [Documentação do Github Actions](https://docs.github.com/pt/free-pro-team@latest/actions)
+- [Sobre GitHub Actions](https://github.com/features/actions)
+- [Introdução ao GitHub Actions](https://gabrieltanner.org/blog/an-introduction-to-github-actions)
+- [Documentação do GitHub Actions](https://docs.github.com/pt/free-pro-team@latest/actions)
 
 # Autores
 
