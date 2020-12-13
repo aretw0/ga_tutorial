@@ -25,6 +25,7 @@ Esta apresentação demonstra a configuração e uso do GA (Github Actions) em u
 
 Crie um projeto usando maven e o coloque em um repositório no github
 
+
 Usando o maven é possível criar um projeto java básico:
 
 ```
@@ -33,6 +34,8 @@ mvn archetype:generate \
 -DartifactId=testingtools_ga -DarchetypeArtifactId=maven-archetype-quickstart \
 -DarchetypeVersion=1.4 -DinteractiveMode=false
 ```
+
+## Configurando o arquivo de configuração POM.xml
 
 Propriedades no arquivo POM.xml:
 
@@ -69,6 +72,176 @@ Artefato no repositório Maven:
 <groupId>br.ufpe.cinmoto.ga_tutorial.app</groupId>
 <artifactId>ga_tutorial</artifactId>
 <version>1.0-SNAPSHOT</version>
+```
+
+## Classes do Domínio
+
+Conta:
+
+```
+public class Conta {
+
+	private String nome;
+	private int saldo;
+	private int credito;
+
+	public Conta(String nome, int saldo, int credito) {
+		this.nome = nome;
+		this.saldo = saldo;
+		this.credito = credito;
+	}
+
+	public void saque(int valor) {
+		if (saldo >= valor) {
+			saldo = saldo - valor;
+		} else {
+			throw new SaldoNaoSuficienteException("Você não possui saldo suficiente");
+		}
+	}
+
+	public void deposito(int valor) {
+		saldo = saldo + valor;
+	}
+	
+	public void transferenciaDoc(int valor) {
+		if (valor > 500) {
+			throw new TransferenciaException("Valor máximo para transferência DOC: R$ 5.000,00");
+		}
+		saldo = saldo - valor;
+	}
+	
+	public void pagarConta(int valor) {
+		if (saldo >= valor) {
+			saldo = saldo - valor;
+		} else if (saldo + credito >= valor) {
+			credito = credito - valor;
+			credito = credito + saldo;
+			saldo = 0;
+		} else {
+			throw new SaldoNaoSuficienteException("Você não possui saldo nem crédito suficientes");
+		}
+	}
+	
+	public int saldo() {
+		return saldo;
+	}
+	
+	public int credito() {
+		return credito;
+	}
+}
+```
+
+Exceção de Saldo não Suficiente:
+
+```
+public class SaldoNaoSuficienteException extends RuntimeException {
+
+	private static final long serialVersionUID = 1L;
+
+	public SaldoNaoSuficienteException(String string) {
+		super(string);
+	}
+
+}
+```
+
+Exceção de Saldo não Suficiente:
+
+```
+public class TransferenciaException extends RuntimeException {
+
+	private static final long serialVersionUID = 1L;
+
+	public TransferenciaException(String string) {
+		super(string);
+	}
+
+}
+```
+
+
+## Classe Com Testes Unitários
+
+ContaTest:
+
+```
+public class ContaTest {
+
+	Conta conta;
+	
+	@Rule
+	public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
+	
+	@Before
+	public void initConta() {
+		conta = new Conta("user", 50, 100);
+	}
+	
+	@Test
+	public void testDeposito() {
+		conta.deposito(50);
+		assertEquals(100,  conta.saldo());
+	}
+	
+	@Test
+	public void testSaque() {
+		conta.saque(30);
+		assertEquals(20, conta.saldo());
+		
+		conta.saque(20);
+		assertEquals(0, conta.saldo());
+		
+		conta.deposito(88);
+		conta.saque(8);
+		assertEquals(80, conta.saldo());
+	}
+	
+	@Test
+	public void testTransferencia() {
+		conta.transferenciaDoc(25);
+		assertEquals(25, conta.saldo());
+		
+		conta.transferenciaDoc(20);
+		assertEquals(5, conta.saldo());
+	}
+	
+	@Test
+	public void testPagar() {
+		conta.pagarConta(10);
+		assertEquals(40, conta.saldo());
+		
+		conta.pagarConta(140);
+		assertEquals(0, conta.saldo());
+		assertEquals(0, conta.credito());
+	}
+	
+	@Test
+	public void testCredito() {
+		assertEquals(100, conta.credito());
+	}
+	
+	@Test(expected = SaldoNaoSuficienteException.class)
+	public void testSaldoExcepetion() {
+		conta.saque(100);
+	}
+	
+	@Test(expected = SaldoNaoSuficienteException.class)
+	public void testPagarExcepetion() {
+		conta.pagarConta(500);
+	}
+	
+	@Test(expected = TransferenciaException.class)
+	public void testTransferenciaException() {
+		conta.transferenciaDoc(501);
+	}
+	
+	@Test
+	public void testTransferenciaExceptionBoundary() {
+		conta.transferenciaDoc(500);
+		assertEquals(-450,  conta.saldo());
+	}
+}
 ```
 
 
