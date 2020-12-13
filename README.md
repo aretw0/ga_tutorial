@@ -1,7 +1,7 @@
 [![Java](https://img.shields.io/badge/Language-java-yellow)](https://www.java.com/pt-BR/)
 [![Maven](https://img.shields.io/badge/Build-Maven-blue)](https://maven.apache.org/)
 [![JUnit5](https://img.shields.io/badge/Testing-JUnit5-yellow)](https://junit.org/junit5/)
-[![License:MIT](https://img.shields.io/github/license/aretw0/ga_tutorial)](https://opensource.org/licenses/MIT)
+[![License:MIT](https://img.shields.io/badge/License-MIT-blue)](https://opensource.org/licenses/MIT/)
 
 <p align="center">
     <img alt="Github Actions" src="images/github_actions_logo_hd.png" height="280" />
