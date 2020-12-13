@@ -1,6 +1,8 @@
 [![Java](https://img.shields.io/badge/Language-java-yellow)]() [![MAven](https://img.shields.io/badge/Build-Maven-blue)]() [![MAven](https://img.shields.io/badge/Testing-JUnit5-yellow)](https://opensource.org/licenses/MIT) [![License:MIT](https://img.shields.io/github/license/aretw0/ga_tutorial)](https://opensource.org/licenses/MIT) 
 
-[![Github Actions](https://raw.githubusercontent.com/FDPS-CIN/images-readme/master/github_actions_logo_hd.png)]()
+<p align="center">
+  <img alt="Github Actions" src="https://raw.githubusercontent.com/bettercap/media/master/logo.pnhttps://raw.githubusercontent.com/FDPS-CIN/images-readme/master/github_actions_logo_hd.png)" height="140" />
+</p>
 
 # Tópicos
   - [Introdução](README.md#introdução)
