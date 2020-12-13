@@ -49,10 +49,10 @@ Depedências no arquivo POM.xml:
 ```
 <dependencies>
 	<dependency>
-	  <groupId>junit</groupId>
-	  <artifactId>junit</artifactId>
-	  <version>4.11</version>
-	  <scope>test</scope>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>4.11</version>
+		<scope>test</scope>
 	</dependency>
 	<dependency>
 		<groupId>com.github.stefanbirkner</groupId>
