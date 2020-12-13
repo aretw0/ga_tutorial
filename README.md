@@ -31,8 +31,8 @@ Usando o maven é possível criar um projeto java básico:
 
 ```bash
 mvn archetype:generate \
-    -DgroupId=br.ufpe.cinmoto.testingtools_ga.app \
-    -DartifactId=testingtools_ga \
+    -DgroupId=br.ufpe.cinmoto.ga_tutorial.app \
+    -DartifactId=ga_tutorial \
     -DarchetypeArtifactId=maven-archetype-quickstart \
     -DarchetypeVersion=1.4 \
     -DinteractiveMode=false
