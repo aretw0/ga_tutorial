@@ -3,9 +3,8 @@
 [![JUnit5](https://img.shields.io/badge/Testing-JUnit5-yellow)](https://junit.org/junit5/)
 [![License:MIT](https://img.shields.io/badge/License-MIT-blue)](https://opensource.org/licenses/MIT/)
 
-<p align="center">
-    <img alt="Github Actions" src="images/github_actions_logo_hd.png" height="280" />
-</p>
+[<img src="http://img.youtube.com/vi/wixa6Bcbqkw/0.jpg" width="75%">](http://www.youtube.com/watch?v=wixa6Bcbqkw "Video da prática no youtube")
+
 
 # Tópicos
 
