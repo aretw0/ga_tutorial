@@ -1,6 +1,6 @@
 [![Java](https://img.shields.io/badge/Language-java-yellow)](https://www.java.com/pt-BR/)
 [![Maven](https://img.shields.io/badge/Build-Maven-blue)](https://maven.apache.org/)
-[![JUnit5](https://img.shields.io/badge/Testing-JUnit5-yellow)](https://junit.org/junit5/)
+[![JUnit4](https://img.shields.io/badge/Testing-JUnit4-yellow)](https://junit.org/junit4/)
 [![License:MIT](https://img.shields.io/badge/License-MIT-blue)](https://opensource.org/licenses/MIT/)
 
 [<img src="http://img.youtube.com/vi/wixa6Bcbqkw/0.jpg" width="75%">](http://www.youtube.com/watch?v=wixa6Bcbqkw "Video da prática no youtube")
